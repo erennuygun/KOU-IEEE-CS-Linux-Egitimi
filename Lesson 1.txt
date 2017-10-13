@@ -1,0 +1,53 @@
+
+help :  Kabuk komutlarýnýn listesini gösterir. Bu komutlarýn herbiri için help komut_ismi komutu ile yardým alabilirsiniz.'komut_ismi --help Söz konusu komut ile ilgili yardým iletisi basar (varsa).
+ 
+man baþlýk : Sistemdeki kýlavuz (man) dosyalarý. Bir komut hakkýnda olabildiði gibi bir dosya ya da bir iþlev hakkýnda da olabilir.
+ 
+apropos baþlýk : söz konusu baþlýkla ilgisi olan komutlarýn listesi.
+     
+ls O an : bulunulan dizinin içeriðini listeler.
+     
+ls -al | more O : an bulunulan dizindeki bütün dosyalarý gösterir (. ile baþlayan gizli dosyalarý da) Komut burada more komutuna yönlendirilmiþtir, bu sayede çýktýnýn bir ekrandanfazla olmasý durumunda bir ekranlýk çýktýdan sonra devamýný göstermek için bir tuþa basmanýz gerekir.
+     
+cd dizin :  dizin dizinine geçilir; dizin verilmezse ev dizinine geçilir.
+      
+cp kaynak hedef : Bir yerdeki dosya ya da dizinleri baþka bir yere kopyalamak içindir.         	Unix'lerde genelde bu tür komutlarda her zaman kaynak önce hedef sonra yazýlýr.
+  
+mv : Dosyayi kaydirir ya da ismini degistirir.
+    
+mv dosya hedefdosya : dosyayý hedef dosyayý taþýr.
+ 
+mv -r dizin hedefdizin : dizini hedef dizine taþýr.
+ 
+mcopy kaynak hedef : DOS'tan Unix'e ya da tersine (disketi baðlamanýz þart deðil) bir dosyayý baþka bir yere kopyalar.Ayný mantýkta çalýþan mdir,mcd,mren,mmove,mdel,mmd,mrd,mformat gibi komutlar da vardýr.
+  
+ln hedef [isim] : Sözkonusu hedef e sabit bað oluþturur. Sözkonusu dosyalar iki yerde de var gibi gözükür, herhangibir deðiþiklik diðerini de etkiler,biri silindiðinde diðeri kalýr. Sabit baðlarýn kýsýtlamalarý, bað dosyasý ile asýl dosyanýn ayný dosya sistemi içinde olmasý gerekliliði ve dizinlerle özel dosyalara sabit bað verilememesidir.
+ 
+ln -s hedef [isim] : hedef 'e bir sembolik bað dosyasý (isim verilmezse hedef ile ayný isimde) oluþturur.
+ 
+Sembolik baðda hedef 'in nerede bulunacaðýnýn bilgisi vardýr. Sembolik baðlar dizinler için de kullanýlabilir. Tek sorunu hedef silindiðinde bað bozulmuþ olur.
+ 
+rm dosya ...:  Verilen dosyalarý siler. Sileceðiniz dosyanýn sahibi olmanýz gerekir.
+ 
+mkdir dizin :  dizin dizinini oluþturur.
+ 
+rmdir dizin ... : Belirtilen dizin 'ler boþsa silinir.
+
+rm -r dosya ... : Dosya ve dizinleri ve dizinlerin içindeki dizinleri ardarda siler. Root olarak kullanýrken dikkat edin, çünkü herþeyi silebilirsiniz!.
+ 
+cat dosya | more : Bir dosyayý sayfa sayfa görüntülemek için kullanýlýr.
+ 
+less dosya : Önceki komuta eþdeðerdir, biraz daha fazla özellikleri vardýr
+ 
+vim dosya : Bir metin dosyasýný düzenlemek için kullanýlýr. Ayný türden nano, joe, mcedit gibi metin düzenleyicileri de kullanabilirsiniz, ancak vim ile UTF-8 kodlu metinleri de düzenleyebilirsiniz. Diðerleri bunu yapamaz.
+   
+nano dosya : Vim editörü gibi buda bir metin dosyasýný düzenlemek için kullanýlýr.
+ 
+find -name "dosya" dosya adlý dosyayý en üst dizinden itibaren aramaya baþlar. Dosya ismi,ve
+ &nbsp gibi arama karakterleri de içerebilir. Örneðin benim sistemimde "fazlames" dizgesi ile fazlamesai.net.txt ve fazlamesai.org.txt dosyalarý bulunuyor.
+ 
+locate dosyaismi : find gibidir, fakat düzenli olarak oluþturulan bir veritabanýna baðlýdýr, sistemdeki son deðiþikliklerden haberi olmayabilir.
+ 
+touch deneme.txt 'deneme' isimli dosyanýn oluþturulma ve düzenleme tarih bilgilerini þu anki tarihe deðiþtirir. Eðer böyle bir dosya yoksa sýfýr bayt uzunluðunda deneme.txt isimli dosya oluþturur.
+ 
+xterm : Basit bir X uçbirimi açar. Daha hafif sürümleri (rxvt, aterm, eterm gibi) bulunur ve tercih edilir.
