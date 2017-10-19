@@ -1,0 +1,128 @@
+Linux Eðitimimizin 2. Dersinde iþlediðimiz konular :
+
+
+/bin	: Olmasý þart komut dosyalarýný içerir
+/boot	: Baþlangýç için gerekli dosyalarý bulundurur
+/dev	: Donaným dosyalarý vardýr
+/etc	: Sistem ayarlarýný barýndýrýr
+/lib	: Kütüphane dosyalarý ve kernel modülleri bulunur 
+/media	: Kaldýrýlabilir aygýtlarýn (CD-Rom, Flash bellek vs...) 
+	  sisteme eklendiði klasördür.
+/mnt	: Bir dosya sistemini geçici olarak eklemek için kullanýlýr. 
+/opt	: Ekstra programlarýn kurulmasý içindir
+/sbin	: Sistemi yöneticisiyle ilgili çalýþtýrabilir dosyalarý tutar.
+/srv	: Sistemin sunduðu hizmetlerle alakalýdýr
+/tmp	: Geçici dosyalarý tutmak içindir
+/usr	: Ýkincil bir hiyerarþi 
+/var	: Deðiþken verileri saklar
+/initrd :  initrd, initial ramdisk kýsaltmasýdýr. Aþaðý yukarý anlamý Baþlangýç Bellek Diski oluyor. 
+Boot aþamasýnda ilk önce çekirdek (kernel) yüklenir. Bundan sonra bilgisayarýnýzýn belleðinde bir Bellek Diski oluþturulur.
+ Oluþturulan Bellek Disk üzerinde / (root) yansýsý açýlýr ve kök dizin olarak monte edilir. 
+/initrd bu iþlemlerin yapýlmasý ve Linux'un yüklenmesi için gereklidir.
+
+/lib : Kernel modülleri ve paylaþýlan kütüphane dosyalarý bu klasörde bulunur. 
+Var olan çekirdek modüllerini /lib/modules/[versiyon_numarasi] içersinde bulabilirsiniz. 
+Bahsedilen kütüphane dosyalarýysa, sistemi baþlatmak ve /bin ile /sbin içersindeki komutlarý çalýþtýrmak için gereklidir. 
+Paylaþýlan kütüphane dosyalarýný, Windows'ta DLL (Dynamically Linked Library) ile eþ tutabiliriz. 
+Linux'ta kütüphane dosyalarýnýn sonu ".so" ile biter.
+
+/lost+found :  Ýngilizce bir terim olan Lost and Found, kayýp eþya bürosu demektir. 
+Kýsaca özetlersek; kötü bir sistem kapanmasýndan sonra, olmasý gereken bazý dosyalarý bulamýyorsanýz
+kayýp eþya bürosuna bakmanýzda yarar var.
+
+/mnt : media klasörüne benzer. Temel farký; çýkarýlabilir aygýtlar yerine, dosya sistemleri veya donaným aygýtlarý için kullanýlýyor oluþudur. 
+Baðlama (mount) iþlemi, herhangi bir dosya sistemini, iþletim sisteminin kullanmasýný saðlar. Nereye baðladýðýnýz sizin tercihinizdir. 
+Yani bir diski, /media veya /mnt klasörüne ya da bir baþka yere baðlamanýz fark etmeyecektir. Sadece genel kabul görmüþ bazý baðlantý noktalarý bulunuyor
+ /mnt klasörü de onlardan bir tanesi.
+
+/proc : /proc oldukça özel sanal bir dosya sistemidir. Bizim bildiðimiz anlamda fiziksel dosyalar bulundurmaz; sistem durumuna dair bilgi içeren sanal dosyalarý vardýr.
+Örneðin "cat /proc/swaps" yazarak sisteminizdeki takas dosyalarýna dair bilgi alabilir ya da "cat /proc/cpuinfo" komutuyla iþlemcinizin özelliklerini görebilirsiniz.
+/proc klasörü içersindeki dosyalar, sadece sistem durumunu görüntülemek için kullanýlmaz; gerektiðinde ayarlamak için de kullanýlabilir. Fakat son kullanýcýlara hitap etmediðinden, bu konuyu burada keselim.
+
+/root : Unix'in ilk versiyonlarýnda root kullanýcýsýnýn kendine ait bir ev klasörü yoktu. Direkt olarak / (root klasörü) altýnda çalýþýrdý. 
+Fakat zamanla bunun iyi bir yöntem olmadýðý anlaþýldý ve root kullanýcýsýnýn ayrý bir klasöre sahip olmasý gerektiðine karar verildi. 
+Diðer kullanýcýlardan farklý olduðu için root'un ev klasörü /home altýnda tutulmaz; ayrýlmasý için /root klasörü altýndadýr.
+
+  Searching and Comparing Files
+
+grep komutu: Linux kullanýcýlarýnýn en çok kullandýðý avam tabiriyle haþir neþir olduðu bir komutdur. Açýlýmý ise Global Regular Expression Printer (evrensel düzenli ifade yazicisi) þeklindedir. 
+Grep komutunun en temel iþlevi Belirli bir  ifadeyi,kelimeyi bir dosya içinde bir metin içinde aramasýdýr.
+
+grep (aranacak kelime) dosya : Eðerki bir dosya içerisinde bir kelime aramak istiyorsak bu komutu kullanýrýz.
+
+find komutu: Bu komut ile dosya arama iþlemleri yapýlýr. Yani bu komut ile bilmediðimiz bir dizinin altýndaki bir dosyayý bulabiliriz. 
+Farklý kullaným þekli ve örnekleri aþaðýdaki gibidir. Bu komut için root olmalýsýnýz.
+
+find / -name “DosyaAdý” : Bu kullanýmda sistemde Belirtilen bir Dosya Adý bulunur.
+
+find / -name  “DosyaAdý” *  : Burda belirtilen bir dosya adýna benzer dosyalar bulunur.
+
+locate komutu: Locate de týpký find komutu gibi bir dosya arama komutudur. Fakat find komutundan daha hýzlý çalýþýr ve çokça kullanýlýr. 
+Find, realtime da arama yaptýðý için biraz daha yavaþtýr ancak locate komutu daha önceden kataloglanmýþ bir veritabanýndan yada bellekten arama yapar. 
+Bu yüzdendir ki locate komutu find komutuna göre çok hýzlý sonuç üretir. Komutun kullaným þekilleri aþaðýdaki gibidir.
+
+locate DosyaAdý : Bu þekilde sistemde belirtilen bir dosya adý hýzlýca bulunup kullanýcýya sunulur.
+
+locate -i DosyaAdý: Bu þekilde kullanýldýðýnda DosyaAdýný büyük küçük harf ayrýmý yapmadan karakterleri arar.
+
+  File Permissions
+
+drwx------ 2 erenuygun erenuygun 4096 Eki 19 20:59 deneme
+-rw-rw-r-- 1 erenuygun erenuygun    4 Eki 19 20:45 linux
+
+
+Sol tarafta izinleri/haklarý göstermektedir.Ýlk sýrada bulunan "d" iþaret bunun bir dizin olduðunu gösteriyor. Devamýnda gelen "r" okuma, "w" yazma, "x" ise çalýþma hakkýný simgeliyor. 
+
+Hemen altýndan devam edelim, "-" bunun bir düz dosya olduðunu  belirtiyor. Devamýnda sahibi için okuma ve yazma hakký, grubu için okuma ve yazma hakký, diðerleri içinse sadece okuma hakký verilmiþ.
+
+Ýkinci satýrý anlatýrken üç bölümde anlattým. Çünkü ilk üçlü sýra (r, w,x) sahibi(users), ikinci üçlü sýra grubu(groups), sonra üçlü sýra ise diðerlerini(others) temsil eder.
+
+Yani -rwx-rx-r örneðini verirsek, ilk sýrada bulunan "r, w ve x" sahibi için okur, yazar ve çalýþtýrýr haklarýný verirken ikinci sýrada "r, x" gurubu için sadece okur ve çalýþtýrabilir ama yazamaz haklarýný
+
+ diðerleri içinse "r" sadece okur ama yazýp, çalýþtýramaz haklarýný göstermektedir
+
+Ýkinci sýrada bulunan linux dosyasý için ilk üçlü sýrada yani usersta çalýþtýrma hakký yoktu, bu hakký vermek için,
+
+  chmod u+x linux   : komutunu yazarýz
+
+Dosya izinlerini/haklarýný sayýsal olarak da tanýmlayabiliriz ki sadece çalýþtýrma izni için deðil, toplu yetki verme durumlarýnda daha çok kullanýlýr.
+
+
+400   =   Sahibi okur
+200   =   Sahibi yazar
+100   =   Sahibi çalýþtýrýr
+040   =   Grubu okur
+020   =   Grubu yazar
+010   =   Grubu çalýþtýrýr
+004   =   Diðerleri okur
+002   =   Diðerleri yazar
+001   =   Diðerleri çalýþtýrýr
+
+
+Örneðin 777 yazarsak bütün kullanýcýlara tam yetki vermiþ oluruz.
+
+    Be Root 
+
+sudo su : yazarak ve parolanýzý girerek root olmuþ olursunuz.
+
+su (kullanýcý adý) : bu komut ile de istediðiniz bir kullanýcýya geçebilirsiniz.
+
+passwd : Bu komut ile de parolanýzý deðiþtirebilirsiniz.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
