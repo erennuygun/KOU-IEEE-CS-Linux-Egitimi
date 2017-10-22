@@ -1,0 +1,129 @@
+﻿   Linux eğitimimizin 3.dersinde işlenenler :
+
+
+
+
+
+passwd : Yetkili olduğun kullanıcının şifresini değiştirmek için kullanılır.
+
+
+
+Parola ile şifre arasındaki fark :
+
+
+     Şifre, okunabilir metinlerin rc5, des, idea, rsa vs. gibi algoritmalar ile geri dönüştürülebilir ya da md5, md4, ripemd-128, sha-1 vs. gibi algoritmalar ile geri dönüştürülemez hallerine denir.
+Aksi gerekmediği sürece binary olurlar (unix bir sistemde /etc/shadow dosyasını açarsanız içerisinde kullanıcı parolasının şifrelenmiş halini ascii olarak görebilirsiniz mesela).
+
+parola ise, herhangi bir okunabilir
+seçilmiş ve gizli tutulması gereken kelimedir (elma^, -armut-, _ismail18, p027akal, m32ha8a gibi).. parola, bakıldığında -çoğunluka- anlam ifade ederken şifre sağlıklı insanlara bir anlam ifade etmez.
+
+Ayrıca "parola" olduğu gibi kullanılıp bir yerlere yazılırken, "şifre" olduğu gibi kullanılıp bir yerlere yazılmaz.
+
+bu bağlamda kullanıcı adının "şifresi" olmaz. "parolası" olur.
+
+
+
+
+echo (yazı) : Programlama dillerinde olduğu gibi bu komutta sağ tarafındaki yazıları yazdırmaya yarar.
+
+
+Eğer ki terminal de "x=eren" gibi bir değişken oluşturursanız. "echo $x" yazdığınız zaman x değişkenini eren olarak yazdıracaktır.
+
+
+
+ls > dosya.txt : Text dosyasına ilk başta yazdığınız komutun sonucunu yazdırmak için kullanılan bir komuttur.
+
+
+Fakat > işaretini ikinci kez ve aynı dosya üzerine uygularsanız dosyanın üzerine yazar.Bu durumu engellemek için ise ls >> dosya.txt yazabilirsiniz.
+
+ 
+
+ 	Süreç Yönetimi (Process Managament)
+
+
+
+ps :  Linux türevi sistemlerde çalışan ps komutu sistem üzerinde çalışan süreçleri görebilmenizi sağlar. 
+
+Bunların arasından süreç kontrolü, süreç sorumlusu, süreç numarası, çalıştırılan komut, zaman, cpu, bellek gibi birçok bilgi görebilirsiniz.
+
+
+
+ps aux : sistem süreçleri çalışırken hangi sürecin daha fazla cpu ve memory tükettiğini görmek isterseniz bu komutu kullanabilirsiniz.
+
+
+
+ps aux | grep firefox : belirli bir programın sürecini aramak isterseniz bu komutu kullanabilirsiniz.
+
+
+
+kill (PİD NO) : ps aux yazdıktan sonra kapatacağını sürecin pid numarasını alarak bu komutu yazdığınız zaman süreç sonlanır.
+
+
+
+pkill chrome : Özel olarak öldürmek istediğiniz bir süreç var ise aşağıdaki komut kullanılabilir. Bütün chrome süreçleri öldürmek için.
+
+
+
+kill -9 ssh : Bir süreci kill komutu ile öldüremezseniz -9 ( SIGKILL ) numarasını kullanarak daha öldürücü bir sinyal göndererek öldürebilirsiniz.
+
+
+  
+
+
+ 	Sistemden Bilgi alma komutları
+
+
+
+
+date: İşletim sisteminin saat ve tarihini görüntüler.
+
+
+
+cal : Bulunduğunuz ayın takvimini görüntüler.
+
+
+
+uptime : Sistemin açık kalma saatini görüntüler.
+
+
+
+w : sistem özelliklerini açar.
+
+
+
+lsb_release -a : Kullanığınız dağıtım hakkında bilgi verir.
+
+
+
+uname -a : Kernel,cpu dağıtım hakkında bilgi verir.
+
+
+
+fdisk -l : Disk kullanımı,dağılımı hakkında bilgi verir.
+
+
+
+free: Bellek kullanımını görüntüler.
+
+
+
+history: Kullanılan hesap için çalıştırılan komutları listeler.
+
+
+
+hostname: Yerel sunucu adını verir.
+
+rwho -a: Ağa bağlı kullanıcıları listeler.
+
+
+
+uptime: Bilgisayar açıldığından beri geçen süreyi verir.
+
+
+
+who: Makineye bağlı kullanıcıları listeler.
+
+whoami: Giriş isminizi görüntüler.
+
+
+
