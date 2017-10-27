@@ -1,0 +1,200 @@
+    5. ve son Dersimizde Ýþlediklerimiz :
+
+	AÐ KOMUTLARI : 
+
+ifconfig
+
+aktif olan að adöðtörlerinin bilgilerini aldýklarý ip adresilerini görmemizi saðlar.
+
+ifconfig -a
+
+Komutu ile aktif olmayan að adöpterlerinide görebiliriz.
+
+ifconfig eth0 192.168.10.7 netmask 255.255.255.0 up
+
+komutu ile kalýcý olmadan elle ip verebiliriz.
+
+ifup eth0
+
+eth0 að adöpterini aktif edebiliriz.
+
+ifdown eth0
+
+komutu ile eth0 adöpterini pasif yaparýz.
+
+cat /etc/sysconfig/network-scripts/ifcfg-eth0
+
+DEVICE=”eth0¨
+BOOTPROTO=”static”
+NM_CONTROLLED=”yes”
+ONBOOT=”yes”
+TYPE=”Ethernet”
+IPADDR=”194.27.145.95¨
+NETMASK=”255.255.255.0¨
+GATEWAY=”194.27.145.2¨
+DNS1=”8.8.8.8¨
+
+/etc/sysconfig/network-scripts/ dizini altýndaki sciptlerde istedðimiz ayarlari yapabiliriz.
+
+--------------------------------------------------
+
+virtual ip eklemek istersek sýrasýyla aþaðýdaki adýmlarý izleyebiliriz.
+
+cd/etc/sysconfig/network-scripts
+
+cp ifcfg-eth0 ifcfg-eth0:1
+
+cat /etc/sysconfig/network-scripts/ifcfg-eth0:1
+
+DEVICE=”eth0:1¨
+BOOTPROTO=”static”
+NM_CONTROLLED=”yes”
+ONBOOT=”yes”
+TYPE=”Ethernet”
+IPADDR=”194.27.145.96¨
+NETMASK=”255.255.255.0¨
+GATEWAY=”194.27.145.2¨
+DNS1=”8.8.8.8¨
+
+Device ismini deðiþtiririz ve istediðimiz ip’yi verdikten sonra service network restart yada ifup eth0:1 komutu ile eth0:1 virtual ip’sini kullanmaya baþlayabiliriz.
+
+ifconfig  eth0:1 192.168.10.8 netmask 255.255.255.0 up
+
+komutu ile virtual ip’yi geçici olarak verebiliriz.
+
+ 
+
+---------------------------------------------------
+
+Normalde iki að adaptörü ayný anda DHCP’den IP alamaz ikinci adaptöründen DHCP’den IP almasýný saðlayabilmek için;
+
+dclient eth1 komutunu kullanabiliriz.
+
+-----------------------------------------------------
+
+DNS (alan adý sunucu) sunucularýnýn ip’sini girmek için etc dizini altýndaki resolv.conf  dosyasýna  kullanmak istediðimiz dns server ip’sini girebiliriz.
+
+cat /etc/resolv.conf
+
+nameserver 8.8.8.8
+
+---------------------------------------------------
+
+hostname centos.org
+
+Komutu ile sunucu ismini geçici olarak deðiþtirebiliriz.
+
+cat /etc/sysconfig/network
+
+NETWORKING=yes
+HOSTNAME=erenuygun
+
+network dosyasýna hostname girebiliriz sunucuyu reboot ettikten sonra aktif olur.
+
+cat /etc/hosts
+
+127.0.0.1 localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1 localhost localhost.localdomain localhost6 localhost6.localdomain6
+192.168.10.100 bilgisayarlaboratuvari.net
+
+hosts dosyasýna istediðimiz kayýtlarý eklersek bu kayýtlarý artýk dns’den çözulmez bu dosyadaki kayýtlara bakýlýr.
+
+ping adres : Bu komut network üzerinde bulunan hostlara ICMP (internet control message protocol) ECHO_REQUEST paketi yollar ve bundan dönen paketleri kullanýcýya sunmaya yarar.
+
+traceroute komutu: Bu komut ile network kümesinde bir host a mesaj yada bilgi gönderdiðimiz zaman network kümesinde o hosta ulaþana kadar mesajýn uðradýðý hostlardan bilgi atmaya yarar. traceroute komutu Time to Live süresine göre çalýþýr. 
+Time to live süresi bitince istenilen hosta ulaþmasa eðer veri geri döner.
+
+dig komutu: Bu komut alan adý sorgulamalarýnda kullanýlmaktadýr.
+
+wget komutu: Bu komut ile internetten dosya vb. verileri indirmek için kullanýlýr. wget komutu http,https ve ftp gibi en çok kullanýlan protokolleri desteklemektedir.
+
+host komutu:Bu komut genellikle IP konfigürasyonlarýnda kullanýldýðý gibi Domain adýndan ip adreslerinide öðrenmede de kullanýlýr.
+
+whois komutu : Bu komut karþý sunucunun sistemi hakkýnda sizin için gerekli bilgileri alma rolünde oynar.
+
+-----------------------------------------------------------------------------------
+
+      SSH ÝLE UZAKTAN ERÝÞÝM : 
+
+Secure Shell ya da kýsaca SSH, iki bilgisayar arasýnda güvenli baðlantý kurmaya yarayan bir protokoldür. Temelleri 1995 yýlýna kadar dayanan SSH, günümüzde 
+Unix tabanlý makinelerde uzaktan eriþim standartý hâline gelmiþtir.
+
+Windows kullanýcýlarýyla Linux kullanýcýlarýnýn çok ama çok önemli bir farký vardýr. Windows'ta hemen her þey, arayüzlerle, pencerelerle, fare týklamalarýyla yapýlýr. 
+Halbuki Linux'ta programlarýn çok büyük bir kýsmý komut satýrýndan da yönetilebilir. (Birkaç program tamamen görsel arayüze dayanýyor, ama onlarý þimdilik bir kenara býrakalým.) 
+Uzaktaki ya da elinizin altýndaki bir bilgisayarý komutlarla yönetirsiniz. Ancak birinde komutlarý direkt girerken, diðerinde bu hizmeti yapabilmeniz için SSH devreye girmektedir.
+ Verdiðiniz komutlar ayný kalmakla birlikte, SSH aracýlýðý ile çalýþýr. Yani bilgisayarýnýzý kullanmak, ona bir iþ yaptýrmak istiyorsanýz, SSH'ý kullanmanýz gerekir.
+
+SSH istemcisi (client) Linux iþletim sistemlerinde standart olarak geliyor. Herhangi bir bilgisayara baðlanmak istiyorsanýz yapmanýz gereken þey basit bir komut girmekten ibaret. 
+
+Bunun için aþaðýdaki komutu kullanabilirsiniz:
+
+   ssh -l kullanici_adi adres -p port_numarasi  : 
+
+
+Burada kullanici_adi yerine baðlanacaðýnýz bilgisayarda tanýmlý kullanýcý adýný giriyoruz. adres ise baðlanmak istediðimiz bilgisayarýn adresi oluyor. 
+(Örneðin 212.154.1.17 gibi bir IP adresi ya da www.adres.com gibi bir web adresi de olabilir.) Komutun sonunda bulunan -p parametresi ekstra yazýlmýþ durumda. 
+SSH protokolü, 22 numaralý port üzerinden hizmet vermektedir ve siz -p parametresini yazmadýðýnýz sürece bu port üzerinden baðlantý kurulur.
+ Ancak her zaman 22 numaralý port üzerinden hizmet verilmez, standart port adresi deðiþtirilip güvenlik sebebiyle 2200, 4353 ya da bir baþka deðere dönüþtürülebilir.
+
+Bazý programlar, Internet üzerinden SSH protokolünü kullanarak bilgisayarýnýza saldýrý düzenleyebilir. Üstelik saldýrganýn bilgisayarýnýzý kurban seçmesi, her zaman bilinçli olmaz.
+SSH protokolünü kullandýðýnýzý varsayýp, þans eseri sizin IP'ni hedef olarak seçer. Eðer port numarasý bir yanýt vermiyorsa, saldýrgan SSH'in sisteminizde olmadýðýný düþünerek bir sonraki hedefine yönelir. 
+Bahsettiðim araçlar pek zeki deðil; kullanýcý adý ve parolasýný deneye deneye bulmaya çalýþýrlar. Bulduklarý takdirde, SSH protokolünden sistemize sýzarlar. Ancak bu yazdýklarým, sizi telaþa sürüklemesin.
+ Ýyi seçilmiþ bir parolanýz varsa, saldýrý aylarca bile sürse, bir sonuç vermeyecektir.
+
+SSH saldýrýlarýna karþý yapabileceðiniz ilk þey, güzel bir parola seçmek. En az 8 karakter, içinde büyük-küçük harf ve rakam barýndýran bir parolanýn bulunma ihtimali 1/628'dir. 
+Bu, doðru parolanýn bulunmasý için 220 trilyon ihtimal olduðu anlamýna geliyor. Her deneme 1 saniye içinde bile yapýlsa, bütün olasýlýklarýn denenmesi, 7 milyon yýl sürer. A
+ncak parola olarak seçtiðiniz þey, Ýngilizce bir kelime ya da tahmin edilebilir türdense, parolanýzýn tespit edilmesi çok çok daha basittir. O yüzden parola seçiminde dikkatli davranmalýsýnýz.
+ Elbette SSH saldýrýlarýna hedef olmamak çok daha iyi bir seçenek. Bu yüzden standart port numarasý 22 yerine, bir baþkasýný seçiyoruz ve baðlanýrken -p diye belirtiyoruz. 
+  
+Dosya transferi, ssh'tan biraz daha farklý. Genel yapýsýný aþaðýda görebilirsiniz:
+
+
+ scp -P port_numarasi kaynak_dosya kullanici_adi@adres:hedef_dosya : 
+
+adresi þeklinde yapýlmaktadýr. Örneðin eren kullanýcý adýyla, 2222 numaralý port üzerinden f_prot.sh isimli dosyayý, 212.154.1.17 adresine kopyalamak istiyorsanýz
+scp -P 2222 f_prot.sh eren@localhost:/home/eren/ komutunu kullanýrsýnýz. Bu komutla, kullandýðýnýz bilgisayarda bulunan f_prot.sh dosyasý /home/eren klasörünün altýna kopyalanacaktýr. 
+Hemen hemen bütün Linux daðýtýmlarýnda, SSH mevcuttur. Ancak evde Linux kullanýyorken, iþ yerinizde Windows bulunabilir ve Windows ile SSH'i kullanmak istediðinizde ekstra bazý programlara ihtiyaç duyarsýnýz. (putty ve winscp gibi)
+
+
+  Uzaktan Eriþime Hazýrlanmak : 
+
+Uzakta olan bir bilgisayara SSH ile ne þekilde eriþebileceðimizi gördük. Ancak kendi bilgisayarýmýza nasýl eriþebileceðimizi henüz bilmiyoruz. 
+Eðer bilgisayarýnýz SSH eriþimine açmak istiyorsanýz yapmanýz gereken þey, SSH sunucu servisini (daemon) kurmaktýr. Bunun için de, openssh-server'i kurmanýz gerekir. 
+Eðer Ubuntu kullanýyorsanýz ve ssh servisi yüklü deðilse, aþaðýdaki komutu kullanarak SSH servisini kurup, aktif hâle getirebilirsiniz.
+
+  sudo apt-get install openssh-server
+
+----------------------------------------------------------------------------------------
+
+
+   Araþtýrma yapabileceðiniz forumlar : 
+
+
+http://bilgisayarlaboratuvari.net : Bu site bizim yeni baþladýðýmýz bir giriþim.
+
+https://thenewboston.com/
+
+https://askubuntu.com
+
+https://canyoupwn.me 
+
+https://www.ubuntu.com
+
+https://www.mehmetince.net
+
+ozgursistem.org
+
+https://h4cktimes.com
+
+http://gurelahmet.com
+
+www.codewars.com/
+
+---------------------------------------------------------------------------------------
+
+Diðer derslerimizde görüþmek üzere :)
+
+
+
+
+  
