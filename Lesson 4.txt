@@ -1,0 +1,133 @@
+        4. Dersimizde iþlediklerimiz : 
+
+     
+      DOSYA SIKIÞTIRMA ÝÞLEMLERÝ : 
+
+gzip -9 dosya : Belirttiðiniz dosya'yý en iyi þekilde sýkýþtýrýr ve dosya.gz haline getirir.
+
+gunzip dosya.gz : gzip ile sýkýþtýrýlmýþ dosya.gz dosyasýný dosya olarak açar.
+
+bzip2 dosya : Belirtilen dosya'yý en iyi þekilde sýkýþtýrýr ve dosya.bz2 haline getirir. Çoðunlukla gzip'den daha iyi sýkýþtýrýr.
+
+bunzip2 dosya.bz2 : bzip2 ile sýkýþtýrýlmýþ dosya.bz2 dosyasýný dosya olarak açar.
+
+tar -cvf dosya.tar dosya : Belirtilen dosya'yý depolar dosya.tar haline getirir.
+
+tar -xvf dosya.tar : tar ile depolanmýþ dosya.tar dosyasýný dosya olarak açar.
+
+tar -zcvf dosya.tar.gz klasor1 klasor2 dosya : Belirtilen klasor ve/veya dosya'larý dosya.tar dosyasý haline getirir ve ardýndan gzip ile sýkýþtýrýp dosya.tar.gz haline getirir.
+
+tar -zxvf dosya.tar.gz : Ýsmi dosya.tar.gz gibi belirtilen sýkýþtýrýlmýþ arþiv dosyasýný bulunulan klasör'e açar. Uzantýsý .tar.gz olan dosyalardan baþka .tgz olan dosyalarý da açar.
+
+tar -zxvf dosya.tar.gz -C klasor : Sýkýþtýrýlmýþ dosya.tar.gz dosyasýný belirtilen klasor'e açar.
+
+zip -r dosya.zip dosya_yada_klasor : klasor ve/veya dosya'larý sýkýþtýrýr ve dosya.zip haline getirir.
+
+unzip dosya.zip : zip ile sýkýþtýrýlmýþ dosya.zip dosyasýný dosya olarak açar.
+
+unzip -P Þifre dosya.zip : zip ile sýkýþtýrýlmýþ þifreli dosya.zip dosyasýný dosya olarak açar.
+
+rar a -ap dosya.rar dosya_yada_klasor : klasor ve/veya dosya'larý sýkýþtýrýr ve dosya.rar haline getirir.
+
+rar a -ap -p dosya.rar dosya_yada_klasor : klasor ve/veya dosya'larý þifreli olarak sýkýþtýrýr ve dosya.rar haline getirir. Not : Þifreyi iki kez sorar.
+
+unrar e dosya.rar : rar ile sýkýþtýrýlmýþ dosya.rar dosyasýný dosya olarak açar.
+
+unrar e -p Þifre dosya.rar : rar ile sýkýþtýrýlmýþ þifreli dosya.rar dosyasýný dosya olarak açar.
+
+      
+
+	KULLANICI VE GRUP ÝÞLEMLERÝ : 
+
+
+Kullanýcýlarýn bilgileri /etc dizini altýnda ki passwd dosyasýnda tutulur.Kullanýcýlarýn hash'li þifreleri ise shadow dosyasýnda tutulur.
+
+Gruplarýn bilgileri yine etc dizini altýndaki group dosyasýnda bulunur. grub kullanýcýlarýnýn hashlenmiþ bilgileri ise gshadow dosyasýnda tutulur.
+
+Linux tabanlý iþletim sistemlerinde her nekadar kullanýcýlarla iþlemleri adlara göre yapsakta aslýnda herþey kullanýcýlara verilen id'lerle yapýlýr.Kullanýcýlarýn id'si grublarýnda guid deðeri bulunur.
+
+Root kullanýcýsý linux tabanlý iþletim sistemlerinde süper kullanýcýdýr her türlü iþlemi yapmaya izni vardýr.Dikkat etmemiz gereken þey gerçek root kullanýcýsýnýn id'si 0'ýr.
+
+
+YENÝ KULLANICI EKLEME ÝÞLEMLERÝ
+
+ id root : root'un id bilgilerine bakar.
+
+ çýktýsý : uid=0(root) gid=0(root) groups=0(root)
+
+Sistem yönetiminde olan kullanýcý ve gruplarýn id si genelde 0 ile 500 arasýndadýr, diðer kullanýcý ve gruplarýnki genelde 500 den sonra baþlar.
+
+adduser eren -d /eren/ : eren kullanýcýsný oluþturur ve ev dizinini kök dizini altýnda eren dizini olarak ayarlar.
+
+adduser eren -g root -G ogrenciler : eren kullanýcýsýný oluþtuturr ve birincil grubunu root grubu olarak ayarlar ve ogrenciler grubunada
+dahil eder.
+
+adduser ali -u 1000 : kullanýcýyý oluþtururken istediðinimiz uid yi veriririz.
+
+usermod -d /ali2/  ali : kullanýcýnýn yeniden ev dizini oluþturmasýný saðlar
+
+usermod  -e 24.05.2014  ali :  hesabýn son kullaným tarihini deðiþtireblirz
+
+usermod -f 20 ali : hesap þifresi expire olduktan sonra disable olana kadar geçecek süre
+
+usermod   -s /bin/sh  ali : kullanýcýnýn kabuðu deðiþtirilebilir
+
+kullanýcý ile ilgili deðiþiklikleri /etc/passwd dosyasýndanda  yapabiliriz fakat deðiþklikler oturum kapatýp açtýktan sonra devreye girer.
+
+passwd  ali : kullanýcýnýn þifresini deðiþtirmek için kullanýlan komuttur.
+
+userdel ali : kullanýcýn hesabýný siler.
+
+userdel -r ali : kullanýcýnýn bilgilerini ve ev dizininide siler.
+
+groupadd -g 100 -r -f aligrup :  -g group idsi  -r sistem grubu olarak açtýrýr  -f grup daha once varsa yýnede açtýrýr.
+
+groupadd komutu ile'de yeni grup oluþturabiliriz.
+
+groupmod -g 100 hasan : hasan grubunun guid si deðiþtirilebilir
+
+groupmod -n ali hasan : hasan grubunun adý ali olarak deðiþtirilir
+
+gpasswd hasan : hasan grubunun þifresi deðiþtirilir
+
+gpasswd -a user hasan : hasan grubuna user kullanýcýsýný ekler
+
+gpasswd -R : komutu ile gruba kullanýcý eklemeyý kapatýr.
+
+newgrp ogrenciler : Aktif olan kullanýcý artýk yeni dizin kullanýcý oluþturduðunda dizin veya dosyalarýn grubu ogrenciler grubu olur.
+
+groupdel ogrenciler : ogrenciler grubunu siler
+
+
+     ALIASLAR :
+
+Alias, kullanýcýlarýn komut satýrý üzerinden kendi komutlarýný oluþturmasý daha doðrusu var olan bash komutlarýný yeni isimlerle kaydedilmesidir.
+
+
+alias yeni_komut="kodlarýnýz buraya" : terminal ekranýna artýk yeni_komut 'u yazýnca týrnak iþareti içindeki kodlarýnýz çalýþýr.
+
+unalias silinecek_alias : bu komut ile de aliaslarýnýzý silebilirsiniz.
+
+ Fakat yukarýdaki kodlar ile alias oluþturduðumuz zaman aliaslar gecici olur.Kalýcý olmalarýný saðlamak için aþaðýdaki iþlemi yaparýz.
+
+nano ~/.bashrc : komutu ile bashrc dosyasýnýn içine girer.Oradaki aliaslar kýsmýna kendiniz alias yazarsanýz ve kaydedip çýktýktan sonra
+
+source ~/.bashrc : komutunu yazarsanýz bundan sonra oluþturduðunuz aliasýnýz artýk sizin için kalýcýdýr.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
