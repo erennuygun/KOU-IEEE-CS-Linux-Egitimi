@@ -1,0 +1,78 @@
+﻿				LINUX 101 EĞİTİMİ
+
+DERSİN İÇERİĞİ
+
+
+
+IEEE Kocaeli Üniversitesi Computer Society komitesinde bu sene düzenlenen Linux101 eğitimini ben (Muhammed Eren Uygun) ve arkadaşım (Mehmet Akif Altınok) ile beraber verdik.
+
+Eğitim adından da anlaşılacağı gibi Linux101 şeklinde yani Linux işletim sisteminin ilk başta sanal makinelere kurulumu daha sonra GNU/Linux’un tarihi , özgür yazılım vb. konulardan bahsettik.
+
+Birazda üstüne temel komutlardan bahsettikten sonra ilk dersimizi tamamlamış olduk.Ben her işlediğimiz dersi ve içeriğini kendi github hesabıma attım.
+Çünkü gelemeyen arkadaşlarımızın ihtiyacı olacağını düşündüm.
+
+
+
+DERSİN GÜN VE SAATLERİ
+
+
+
+Eğitimimiz 5 ders olmak üzere 2 şer saatten toplam 10-11 saatte tamamlanmış oldu.Dersler Çarşamba günleri saat 12.00 ile 14.00 arasında ve Cuma günleri saat 15.00 ile 17.00 arasında oldu.
+Fakat bazı derslerin saatlerini değiştirmek zorunda kaldık o günkü işlerimizden veya kulübün işlerinden dolayı.Bunlar: 2.ders Perşembe günü saat 18.00’da oldu.3.derste cuma günü saat 10.00’da oldu.
+
+
+
+DERSE KATILIMCILAR
+
+
+
+Yılmaz Bozoğlan +					Furkan Halidi +++					
+Büşra Erkan++      					Osman Akif Barut+					
+Mücahit Topçu+						Ayşe Gül Kocaoğlu+					
+Gözde Örgü+						Mehmet Somuncu+
+
+Kadir Yüksel++++					Mehmet Ali Çakır +++++
+
+İrem Yılmaz +						Eren Şapçı ++
+
+Melike Oğuz +++++					Ezgi Kaya+
+Sinem Kulaç +++						Metin Kadık ++
+
+Esra Çelebi +						Murat Acar +
+
+Funda Aktaş +						Batuhan Meleci+
+
+Onur Kuş +						Samet Şahin+++
+
+Bahadır Ahmet Ulaş +					Harun Reşit Kırbıyık+++
+
+Enes Başpınar +++					Mutluhan Boz++
+
+Burak Özcan +						Yusuf Can Fidan +++
+Rojda Şam ++						Ertuğrul Demir+
+
+Enes Cangül +++++					Abdulkadir Yapıcı++
+
+Ayşe Gül Köse++						Murat Acar++
+
+Şeyma Nur Mutlu +					Batuhan Meşeci++
+
+İsmail Utku Sayan +					Kamer Koçak++
+
+Hüseyin Can Kalçık+++					Mert Gülcan+
+
+Melih Şahin++						Melih Buğra Esmek+
+Muhammed Altan+						Oğuzhan Aydın++
+
+Mehmet Ali Ongan+++					Melih Karakoç+
+Yasemin Oğuz++						Canberk Duman++
+
+Hüseyin Kahraman+					Mert Demirtaş++
+
+Altan Dolgun +						Cengiz Tın+
+
+Batuhan Özsezen+					Diyar Gel+
+
+
+
+Eğitimimize 54 kişi katıldı.Herkes bütün derslere giremedi fakat giremeyenlerde evden öğrenerek arayı kapatmaya çalıştılar.
